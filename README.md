@@ -55,8 +55,8 @@ Config files located in [./configs/](./configs/)
     [./configs/GN\_2.json](./configs/GN_2.json)
     [./configs/GN\_3.json](./configs/GN_3.json)
 
-1.  Fake PoW node [./configs/pow.json](./configs/pow.json)
-2.  Fake PoA node [./configs/poa.json](./configs/poa.json)
+2.  Fake PoW node [./configs/pow.json](./configs/pow.json)
+3.  Fake PoA node [./configs/poa.json](./configs/poa.json)
 
 Possibilities
 -------------
