@@ -84,7 +84,8 @@ PoA node
 Production nodes have the the same functionality as test nodes and also
 support routing. Nodes can locate each other via routing, for
 bootstraping boot node needs to be run. After bootstraping there is no
-need for boot node. Nodes dynamically update list of connetcs.
+need for boot node. Every node dynamically updates list of connetcs, detects "dead"
+nodes, accepts new nodes and improves routing map constantly.
 
 Build and Install
 =================
