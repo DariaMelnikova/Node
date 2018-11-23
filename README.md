@@ -24,66 +24,168 @@ The framework provides such possibilities:
   - logging;
   - and other features.
 
-## Build and Install
 
-### Install Haskell Stack
+Node
+====
 
-1. Install Haskell stack
+Project structure
+-----------------
 
-`curl -sSL https://get.haskellstack.org/ | sh`
+Source code located in [./src/](./src/)
 
-2. If needed, add the path to your profile
+Test code located in [./test/](./test/)
 
-`sudo nano ~/.profile` and append `export PATH=$PATH:$HOME/.local/bin` at the end.
+Config files located in [./configs/](./configs/)
 
-### Install RocksDB
+### Config for test nodes:
 
-`sudo apt install librocksdb-dev`
+1.  GraphNode:
+    [./configs/GraphNodeTransmitter.json](./configs/GraphNodeTransmitter.json)
+    [./configs/GraphNodeReceiver.json](./configs/GraphNodeReceiver.json)
+2.  Fake PoW node [./configs/tst\_pow.json](./configs/tst_pow.json)
+3.  Fake PoA node [./configs/tst\_poa.json](./configs/tst_poa.json)
 
-### Install libs for the client
+### Config for production nodes:
 
-`sudo apt install libtinfo-dev`
-`sudo apt install libgd-dev`
+1.  GraphNode:
 
-### Clone and Build Node
+-   Boot node [./configs/BN.json](./configs/BN.json)
+-   GraphNode [./configs/GN\_0.json](./configs/GN_0.json)
+    [./configs/GN\_1.json](./configs/GN_1.json)
+    [./configs/GN\_2.json](./configs/GN_2.json)
+    [./configs/GN\_3.json](./configs/GN_3.json)
 
-1. Choose the appropriate local folder, clone the repo and change to the cloned repository folder
+1.  Fake PoW node [./configs/pow.json](./configs/pow.json)
+2.  Fake PoA node [./configs/poa.json](./configs/poa.json)
 
-`git clone https://github.com/Enecuum/Node.git && cd Node`
+Possibilities
+-------------
 
-2. Build & install
+### Test nodes
+
+GraphNode
+
+-   Works with blockchain graph and ledger.
+-   Accepts K-blocks and microblocks, has a wide API.
+-   Can act as a transmitter and receiver. Implements a basic
+    synchronisation scenario.
+
+PoW node
+
+-   Generates K-blocks.
+
+PoA node
+
+-   Accepts K-blocks and transactions.
+-   Generates microblocks.
+
+### Production nodes
+
+Production nodes have the the same functionality as test nodes and also
+support routing. Nodes can locate each other via routing, for
+bootstraping boot node needs to be run. After bootstraping there is no
+need for boot node. Nodes dynamically update list of connetcs.
+
+Build and Install
+=================
+
+Install Haskell Stack
+---------------------
+
+1.  Install Haskell stack
+
+\`curl -sSL <https://get.haskellstack.org/> | sh\`
+
+1.  If needed, add the path to your profile
+
+\`sudo nano \~/.profile\` and append \`export
+PATH=\$PATH:\$HOME/.local/bin\` at the end.
+
+Install RocksDB
+---------------
+
+\`sudo apt install librocksdb-dev\`
+
+Install libs for the client
+---------------------------
+
+`sudo apt install libtinfo-dev` `sudo apt install libgd-dev`
+
+Clone and Build Node
+--------------------
+
+1.  Choose the appropriate local folder, clone the repo and change to
+    the cloned repository folder
+
+`git clone <https://github.com/Enecuum/Node.git> && cd Node`
+
+1.  Build & install
 
 `stack build --fast`
 
-3. Run tests (optional)
+1.  Run tests (optional)
 
-Run all tests:
-`stack build --fast --test`
+Run all tests: `stack build --fast --test`
 
-Run fast tests:
-`stack build --fast --test --test-arguments "-m Fast"`
+Run fast tests: `stack build --fast --test --test-arguments "-m Fast"`
 
-Run slow and unreliable tests:
-`stack build --fast --test --test-arguments "-m Slow"`
+Run slow and unreliable tests: `stack build --fast --test
+--test-arguments "-m Slow"`
 
-### Node executable
+\#\#\# Node executable
 
-`enq-node-haskell` is a single executable for nodes.
-`./configs` contains several configs for different nodes.
+`enq-node-haskell` is a single executable for nodes. `./configs`
+contains several configs for different nodes.
 
-# Running sample nodes
+Running sample nodes
+====================
 
-* GraphNode Transmitter
-`stack exec enq-node-haskell initialize ./configs/GraphNodeTransmitter.json`
+Run console client
+------------------
 
-* GraphNode Receiver
-`stack exec enq-node-haskell initialize ./configs/GraphNodeReceiver.json`
+`stack exec enq-node-haskell initialize ./configs/Client.json`
 
-* Fake PoW
+Run test nodes
+--------------
+
+### GraphNode Transmitter
+
+`stack exec enq-node-haskell initialize
+./configs/GraphNodeTransmitter.json`
+
+### GraphNode Receiver
+
+`stack exec enq-node-haskell initialize
+./configs/GraphNodeReceiver.json`
+
+### Fake PoW
+
+`stack exec enq-node-haskell initialize ./configs/tst~pow~.json`
+
+### Fake PoA
+
+`stack exec enq-node-haskell initialize ./configs/tst~poa~.json`
+
+Run routing nodes
+-----------------
+
+### Boot node {#boot-node id="f0920647-9529-4251-879c-d7c0dc4ee5a3"}
+
+`stack exec enq-node-haskell initialize ./configs/BN.json`
+
+### GraphNode
+
+``` {.example}
+stack exec enq-node-haskell initialize ./configs/GN_0.json
+stack exec enq-node-haskell initialize ./configs/GN_1.json
+stack exec enq-node-haskell initialize ./configs/GN_2.json
+stack exec enq-node-haskell initialize ./configs/GN_3.json
+```
+
+### Fake PoW
+
 `stack exec enq-node-haskell initialize ./configs/pow.json`
 
-* Fake PoA
-`stack exec enq-node-haskell initialize ./configs/poa.json`
+### Fake PoA
 
-* Console client
-`stack exec enq-node-haskell initialize ./configs/Client.json`
+`stack exec enq-node-haskell initialize ./configs/poa.json`
