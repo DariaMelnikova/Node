@@ -95,17 +95,17 @@ Install Haskell Stack
 
 1.  Install Haskell stack
 
-\`curl -sSL <https://get.haskellstack.org/> | sh\`
+`curl -sSL <https://get.haskellstack.org/> | sh`
 
 1.  If needed, add the path to your profile
 
-\`sudo nano \~/.profile\` and append \`export
-PATH=\$PATH:\$HOME/.local/bin\` at the end.
+`sudo nano ~/.profile` and append `export
+PATH=\$PATH:\$HOME/.local/bin` at the end.
 
 Install RocksDB
 ---------------
 
-\`sudo apt install librocksdb-dev\`
+`sudo apt install librocksdb-dev`
 
 Install libs for the client
 ---------------------------
@@ -118,7 +118,7 @@ Clone and Build Node
 1.  Choose the appropriate local folder, clone the repo and change to
     the cloned repository folder
 
-`git clone <https://github.com/Enecuum/Node.git> && cd Node`
+`git clone https://github.com/Enecuum/Node.git && cd Node`
 
 1.  Build & install
 
