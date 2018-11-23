@@ -132,7 +132,7 @@ Run fast tests: `stack build --fast --test --test-arguments "-m Fast"`
 Run slow and unreliable tests: `stack build --fast --test
 --test-arguments "-m Slow"`
 
-\#\#\# Node executable
+### Node executable
 
 `enq-node-haskell` is a single executable for nodes. `./configs`
 contains several configs for different nodes.
