@@ -169,18 +169,16 @@ Run test nodes
 Run routing nodes
 -----------------
 
-### Boot node {#boot-node id="f0920647-9529-4251-879c-d7c0dc4ee5a3"}
+### Boot node
 
 `stack exec enq-node-haskell initialize ./configs/BN.json`
 
 ### GraphNode
 
-``` {.example}
-stack exec enq-node-haskell initialize ./configs/GN_0.json
-stack exec enq-node-haskell initialize ./configs/GN_1.json
-stack exec enq-node-haskell initialize ./configs/GN_2.json
-stack exec enq-node-haskell initialize ./configs/GN_3.json
-```
+`stack exec enq-node-haskell initialize ./configs/GN_0.json`
+`stack exec enq-node-haskell initialize ./configs/GN_1.json`
+`stack exec enq-node-haskell initialize ./configs/GN_2.json`
+`stack exec enq-node-haskell initialize ./configs/GN_3.json`
 
 ### Fake PoW
 
