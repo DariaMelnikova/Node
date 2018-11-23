@@ -176,8 +176,11 @@ Run routing nodes
 ### GraphNode
 
 `stack exec enq-node-haskell initialize ./configs/GN_0.json`
+
 `stack exec enq-node-haskell initialize ./configs/GN_1.json`
+
 `stack exec enq-node-haskell initialize ./configs/GN_2.json`
+
 `stack exec enq-node-haskell initialize ./configs/GN_3.json`
 
 ### Fake PoW
